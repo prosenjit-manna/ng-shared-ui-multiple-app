@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Profile";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/Views/Profile/Index.css" />
+}
+
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <div class="avatar-circle">JD</div>
+        </div>
+        <h1>John Doe</h1>
+        <p class="profile-role">Full Stack Developer</p>
+    </div>
+
+    <div class="profile-info">
+        <div class="info-section">
+            <h2>About Me</h2>
+            <p>
+                Passionate developer with expertise in .NET, Docker, and modern web technologies.
+                Love building scalable applications and learning new technologies.
+            </p>
+        </div>
+
+        <div class="info-section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-badge">C#</span>
+                <span class="skill-badge">ASP.NET Core</span>
+                <span class="skill-badge">Docker</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">CSS</span>
+                <span class="skill-badge">Git</span>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>Contact</h2>
+            <ul class="contact-list">
+                <li>📧 john.doe@example.com</li>
+                <li>💼 linkedin.com/in/johndoe</li>
+                <li>🐙 github.com/johndoe</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/Views/Profile/Index.js"></script>
+}

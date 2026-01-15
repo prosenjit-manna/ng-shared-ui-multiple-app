@@ -1,0 +1,16 @@
+services:
+  web:
+    container_name: mywebsite
+    build:
+      context: ./website
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_URLS=http://+:8080
+    volumes:
+      - ./website:/app:delegated
+    stdin_open: true
+    tty: true
