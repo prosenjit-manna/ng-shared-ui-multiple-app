@@ -9,7 +9,9 @@
     "test": "ng test",
     "dev:all": "concurrently \"ng serve dashboard --port=4200\"  \"ng serve profile --port=4201\"",
     "build:all": "ng build dashboard && ng build profile",
-    "serve:all": "serve -s dist/dashboard/browser -l 4200 & serve -s dist/profile/browser -l 4201"
+    "serve:all": "serve -s dist/dashboard/browser -l 4200 & serve -s dist/profile/browser -l 4201",
+    "transfer": "node transfer-assets.js",
+    "build:transfer": "npm run build:all && npm run transfer"
   },
   "prettier": {
     "printWidth": 100,

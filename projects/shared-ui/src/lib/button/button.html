@@ -1,1 +1,3 @@
-<button>button works!</button>
+<button (click)="onClick.emit()">
+    {{ label || 'Button' }}
+</button>
