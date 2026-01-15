@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyWebsite.Controllers;
 
-public class DashboardController : Controller
+public class HomeController : Controller
 {
     public IActionResult Index()
     {
