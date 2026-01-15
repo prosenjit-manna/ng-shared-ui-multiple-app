@@ -11,7 +11,7 @@
     "build:all": "ng build home && ng build profile",
     "serve:all": "serve -s dist/home/browser -l 4200 & serve -s dist/profile/browser -l 4201",
     "transfer": "node transfer-assets.js",
-    "build:transfer": "npm run build:all && npm run transfer"
+    "build:transfer": "npm run transfer"
   },
   "prettier": {
     "printWidth": 100,
