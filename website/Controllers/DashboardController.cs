@@ -2,14 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyWebsite.Controllers;
 
-public class HomeController : Controller
+public class DashboardController : Controller
 {
     public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult About()
     {
         return View();
     }
