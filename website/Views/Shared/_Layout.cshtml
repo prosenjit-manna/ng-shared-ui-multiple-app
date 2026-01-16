@@ -5,55 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - My Website</title>
     @RenderSection("Styles", required: false)
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        nav {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            gap: 2rem;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #667eea;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-        .content {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-    </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/Profile">Profile</a></li>
-        </ul>
-    </nav>
     <div class="container">
         <div class="content">
             @RenderBody()
