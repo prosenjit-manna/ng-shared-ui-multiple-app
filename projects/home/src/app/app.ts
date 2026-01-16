@@ -31,6 +31,7 @@ export class App {
 
     // If dev mode is enabled, set user data
     if (isDevMode()) {
+      this.user = userData;
       console.log('Dev mode enabled - using mock user data:', this.user);
     }
 
