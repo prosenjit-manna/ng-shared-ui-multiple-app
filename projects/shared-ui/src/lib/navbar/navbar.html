@@ -1,0 +1,40 @@
+<lib-sidebar [(visible)]="visible"></lib-sidebar>
+<div class="max-w-7xl mx-auto ">
+	<p-toolbar
+		[style]="{ 'border-radius': '3rem', 'padding': '1rem 1rem 1rem 1.5rem' ,'margin' : '1rem'}">
+		<ng-template pTemplate="start">
+			<div class="flex items-center gap-2">
+				<button (click)="visible = true"
+					class="w-10 h-10 flex items-center justify-center cursor-pointer hover:bg-gray-100 rounded-full">
+					<svg width="20" height="18" viewBox="0 0 18 20" fill="none"
+						xmlns="http://www.w3.org/2000/svg">
+						<path d="M4 6h16M4 12h16M4 18h16" stroke="#1e293b" stroke-width="2"
+							stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+				</button>
+				<lib-logo />
+			</div>
+		</ng-template>
+
+		<ng-template pTemplate="end">
+			@if (!user) {
+			<div class="flex align-items-center gap-2 lg:mr-2">
+				<lib-button
+					(click)="showModal()"
+					variant="secondary"
+					type="button"
+					customClass="w-full text-center ">
+					Sign In
+				</lib-button>
+			</div>
+			} @else {
+			<div class="flex items-center gap-3">
+				<span class="text-sm font-medium text-gray-700">{{user.name}}</span>
+				<p-avatar
+					[label]="user.name.charAt(0).toUpperCase()"
+					shape="circle" />
+			</div>
+			}
+		</ng-template>
+	</p-toolbar>
+</div>

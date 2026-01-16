@@ -1,3 +1,7 @@
-<button (click)="onClick.emit()">
-    {{ label || 'Button' }}
+<button
+    [type]="type"
+    [disabled]="disabled"
+    [class]="buttonClasses"
+    (click)="handleClick()">
+    <ng-content></ng-content>
 </button>

@@ -1,0 +1,21 @@
+<div class=" my-3 lg:my-4">
+	@if (label) {
+	<label class="block text-sm font-medium text-gray-700 mb-0.5 font-sans">
+		{{ label }}
+	</label>
+	}
+
+	<input
+		[type]="type"
+		[value]="value"
+		[placeholder]="placeholder"
+		[disabled]="disabled"
+		[required]="required"
+		[class]="inputClasses"
+		(input)="onInputChange($event)"
+		(blur)="onBlur()" />
+
+	@if (error) {
+	<p class="mt-1 text-red-600 text-xs">{{ error }}</p>
+	}
+</div>

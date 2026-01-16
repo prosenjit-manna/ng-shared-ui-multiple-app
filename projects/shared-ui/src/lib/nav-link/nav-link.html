@@ -1,0 +1,7 @@
+<a [href]="href"
+	class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-brand rounded-lg transition-colors duration-200 font-sans">
+	@if (icon) {
+	<span class="w-5 h-5 mr-3" [innerHTML]="sanitizedIcon"></span>
+	}
+	{{ label }}
+</a>
