@@ -106,7 +106,7 @@
 				<app-card title="Important Messages" [showHeaderBorder]="true"
 					subtitle="Please review the following messages"
 					customClass="h-full">
-					<div class="h-full flex flex-col">
+					<div class="h-full flex flex-col p-2">
 						<ul class="list-disc list-inside space-y-2 text-gray-700">
 							@for (message of importantMessages; track $index) {
 							<li class="text-sm">{{ message.text }} <a [href]="message.link"
