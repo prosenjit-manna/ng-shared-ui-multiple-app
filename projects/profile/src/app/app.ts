@@ -25,7 +25,7 @@ import { TabsModule } from 'primeng/tabs';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar, Footer, Card, ChartModule, DecimalPipe, Button, TabsModule],
+  imports: [Navbar, Footer, Card, ChartModule, DecimalPipe, Button, TabsModule, AlertBanner],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -50,6 +50,29 @@ export class App {
     if (windowUser) {
       this.currentUser.set(windowUser);
       console.log(windowUser);
+    }
+
+    // Initialize data from window object (production mode)
+    const windowData = window as any;
+
+    if (windowData.paymentInfo) {
+      this.payment = windowData.paymentInfo;
+    }
+
+    if (windowData.accountDetails) {
+      this.accountDetails = windowData.accountDetails;
+    }
+
+    if (windowData.importantMessages) {
+      this.importantMessages = windowData.importantMessages;
+    }
+
+    if (windowData.letters) {
+      this.letters = windowData.letters;
+    }
+
+    if (windowData.documents) {
+      this.documents = windowData.documents;
     }
 
     // If dev mode is enabled, set mock user data
