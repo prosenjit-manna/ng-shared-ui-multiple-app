@@ -1,0 +1,18 @@
+<div
+	[class]="'bg-white rounded-lg shadow-lg overflow-hidden flex flex-col ' + customClass">
+	@if (title || subtitle) {
+	<div class="px-6 py-4" [class.border-b]="showHeaderBorder"
+		[class.border-gray-200]="showHeaderBorder">
+		@if (title) {
+		<div class="lg:text-lg text-base font-semibold text-gray-800">{{ title
+			}}</div>
+		}
+		@if (subtitle) {
+		<p class="text-sm text-gray-600 mt-0">{{ subtitle }}</p>
+		}
+	</div>
+	}
+	<div class="p-6 flex-1">
+		<ng-content></ng-content>
+	</div>
+</div>

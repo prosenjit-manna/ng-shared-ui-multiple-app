@@ -1,9 +1,223 @@
-
 <div class="fixed top-0 left-0 right-0 z-50 ">
 	<lib-navbar [user]="currentUser()"
 		(openModal)="openModal()"></lib-navbar>
 </div>
-<div class=" h-screen"></div>
-<lib-footer></lib-footer>
-<lib-login-modal [redirectUrl]="'http://localhost:4201/'"
-	(loginSuccess)="onLoginSuccess($event)"></lib-login-modal>
+
+<main
+	class="fixed top-32 bottom-0 left-0 right-0 overflow-y-auto bg-gradient-to-b from-gray-50 to-white">
+	<div class="max-w-7xl mx-auto px-4 md:px-8 py-8">
+
+		<!-- Hierarchical Grid Layout -->
+		<div
+			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 grid-rows-2 auto-rows-fr">
+
+			<div class="lg:row-span-1 h-full">
+				<app-card title="Payment Information" [showHeaderBorder]="true"
+					customClass="h-full">
+					<div class="bg-green-50 border-l-4 border-green-400 p-3 mb-4">
+						<p class="text-green-700 text-xs font-medium">The last payment received
+							was {{payment.lastPaymentReceived}}</p>
+					</div>
+
+					<div class="h-full flex flex-col">
+						<div class="grid grid-cols-2 grid-rows-2 gap-4">
+							<div class="bg-blue-50 rounded-lg p-4 border border-blue-100">
+								<h3 class="text-gray-600 text-xs uppercase tracking-wide mb-1">Payment
+									Due Date</h3>
+								<p
+									class="text-brand text-base lg:text-lg font-bold">{{payment.paymentDueDate}}</p>
+							</div>
+
+							<div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+								<h3 class="text-gray-600 text-xs uppercase tracking-wide mb-1">Amount
+									Due</h3>
+								<p
+									class="text-gray-900 text-base lg:text-lg  font-bold">${{payment.paymentAmount
+									|
+									number:'1.2-2'}}</p>
+							</div>
+						</div>
+
+						<div class="flex justify-end mt-auto mb-16">
+							<lib-button
+								variant="secondary"
+								size="sm"
+								customClass="px-8 py-3">
+								Make a Payment
+							</lib-button>
+						</div>
+					</div>
+				</app-card>
+			</div>
+
+			<!-- Information Hub - Spans 2 columns and 1 row on large screens -->
+			<div class="md:col-span-1 lg:col-span-2 lg:row-span-1 h-full">
+				<app-card title="Information Hub" [showHeaderBorder]="false"
+					customClass="h-full">
+					<div class="max-w-md mx-auto h-full flex items-center justify-center">
+						<p-chart type="doughnut" [data]="pieData" [options]="pieOptions"
+							class="w-full"></p-chart>
+					</div>
+				</app-card>
+			</div>
+
+			<div class="md:col-span-2 lg:col-span-2 lg:row-span-1 h-full">
+				<app-card title="Important Messages" [showHeaderBorder]="true"
+					customClass="h-full">
+					<div class="h-full flex flex-col">
+						<ul class="list-disc list-inside space-y-2 text-gray-700">
+							<li class="text-sm">You are eligible to sign up for our no-fee automatic
+								withdrawal program to make your monthly mortgage payment. <a href="#"
+									class="text-blue-600 underline hover:text-blue-700">click
+									here</a>.</li>
+							<li class="text-sm">You asked for paperless communication and we
+								listened! You can now enroll to receive your statement via email. <a
+									href="#" class="text-blue-600 underline hover:text-blue-700">Click here
+									to enroll</a>.</li>
+						</ul>
+
+					</div>
+				</app-card>
+			</div>
+
+			<!-- Account Details - Right below Payment Information -->
+			<div class="lg:row-span-1 md:col-span-2 lg:col-span-1 h-full">
+				<app-card title="Account Details" [showHeaderBorder]="true"
+					customClass="h-full">
+					<div class="h-full flex flex-col">
+						<div class="space-y-4">
+							<div
+								class="flex justify-between items-center py-2 border-b border-gray-100">
+								<span class="text-gray-600 text-sm">Customer Name:</span>
+								<span class="text-gray-900 font-semibold text-sm">John Doe</span>
+							</div>
+
+							<div
+								class="flex justify-between items-center py-2 border-b border-gray-100">
+								<span class="text-gray-600 text-sm">Property Address:</span>
+								<span class="text-gray-900 font-semibold text-sm">123 Main St, City, ST
+									12345</span>
+							</div>
+
+							<div
+								class="flex justify-between items-center py-2 border-b border-gray-100">
+								<span class="text-gray-600 text-sm">Principal Balance:</span>
+								<span class="text-gray-900 font-semibold text-sm">$***</span>
+							</div>
+
+							<div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-4">
+								<p class="text-gray-700 text-xs">
+									*This amount is not a payoff quote. If you would like a payoff quote,
+									please
+									<a href="#" class="text-blue-600 underline hover:text-blue-700">click
+										here</a>.
+								</p>
+							</div>
+						</div>
+
+						<div class="flex justify-center mt-auto">
+							<lib-button
+								variant="outline"
+								size="md"
+								customClass="px-8">
+								Detailed View
+							</lib-button>
+						</div>
+					</div>
+				</app-card>
+			</div>
+
+			<!-- Letters & Documents -->
+			<div class="lg:row-span-2 md:col-span-2 lg:col-span-3  h-96">
+				<app-card title="Letters & Documents" [showHeaderBorder]="true"
+					customClass="h-full">
+					<p-tabs value="0">
+						<p-tablist>
+							@for (tab of tabs; track tab.value) {
+							<p-tab [value]="tab.value">{{ tab.title }}</p-tab>
+							}
+						</p-tablist>
+
+						<p-tabpanels>
+							@for (tab of tabs; track tab.value) {
+							<p-tabpanel [value]="tab.value">
+								@if (tab.content === 'letters') {
+								<div class="overflow-x-auto">
+									<table class="w-full text-sm">
+										<thead>
+											<tr class="border-b border-gray-200">
+												<th class="text-left py-3 px-4 text-gray-600 font-semibold">Letter
+													Date</th>
+												<th class="text-left py-3 px-4 text-gray-600 font-semibold">Letter
+													Name</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="border-b border-gray-100 hover:bg-gray-50">
+												<td class="py-3 px-4 text-gray-600">MM/DD/YYYY</td>
+												<td class="py-3 px-4">
+													<a href="#"
+														class="text-blue-600 hover:text-blue-700 underline">Acknowledgement
+														Letter</a>
+												</td>
+											</tr>
+											<tr class="border-b border-gray-100 hover:bg-gray-50">
+												<td class="py-3 px-4 text-gray-600">MM/DD/YYYY</td>
+												<td class="py-3 px-4">
+													<a href="#"
+														class="text-blue-600 hover:text-blue-700 underline">Escrow
+														Analysis Statement</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								}
+								@if (tab.content === 'documents') {
+								<div class="overflow-x-auto">
+									<table class="w-full text-sm">
+										<thead>
+											<tr class="border-b border-gray-200">
+												<th
+													class="text-left py-3 px-4 text-gray-600 font-semibold">Document
+													Date</th>
+												<th
+													class="text-left py-3 px-4 text-gray-600 font-semibold">Document
+													Name</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="border-b border-gray-100 hover:bg-gray-50">
+												<td class="py-3 px-4 text-gray-600">01/15/2026</td>
+												<td class="py-3 px-4">
+													<a href="#"
+														class="text-blue-600 hover:text-blue-700 underline">2025 Tax
+														Statement</a>
+												</td>
+											</tr>
+											<tr class="border-b border-gray-100 hover:bg-gray-50">
+												<td class="py-3 px-4 text-gray-600">12/01/2025</td>
+												<td class="py-3 px-4">
+													<a href="#"
+														class="text-blue-600 hover:text-blue-700 underline">Annual
+														Statement</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								}
+							</p-tabpanel>
+							}
+						</p-tabpanels>
+
+					</p-tabs>
+				</app-card>
+			</div>
+
+		</div>
+
+		<!-- Footer -->
+		<lib-footer></lib-footer>
+	</div>
+</main>

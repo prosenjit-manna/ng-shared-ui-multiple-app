@@ -1,0 +1,29 @@
+// Custom PrimeNG Tabs styling
+::ng-deep {
+	.p-tabs {
+		.p-tablist {
+			.p-tab {
+				&.p-tab-active {
+					color: #1e293b !important;
+					border-bottom-color: #1e293b !important;
+				}
+
+				&:hover {
+					color: #1e293b !important;
+				}
+			}
+		}
+	}
+
+	// Alternative selectors
+	p-tab.p-tab-active {
+		color: #1e293b !important;
+		border-color: #1e293b !important;
+	}
+
+	.p-tab-active {
+		color: #1e293b !important;
+		border-color: #1e293b !important;
+	}
+
+}

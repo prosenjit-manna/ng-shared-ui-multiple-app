@@ -14,6 +14,7 @@ export class App {
   protected readonly title = signal('dashboard');
   cards = cardsData;
   currentUser = signal<User | null>(null);
+  redirectUrl = isDevMode() ? 'http://localhost:4201/' : '/Profile';
 
   constructor(public loginService: LoginService) {
     // Initialize user from window object
