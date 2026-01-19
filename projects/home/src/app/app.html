@@ -1,84 +1,11 @@
 <!-- Fixed Navbar -->
 <div class="fixed top-0 left-0 right-0 z-50 ">
-	<lib-navbar [user]="user" (openModal)="openModal()"></lib-navbar>
+	<lib-navbar [user]="currentUser()"
+		(openModal)="openModal()"></lib-navbar>
 </div>
 
 <app-hero></app-hero>
 
-@if (showModal) {
-<div
-	class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm p-4 md:p-8"
-	(click)="showModal = false">
-	<div
-		class="flex w-full max-w-5xl bg-white rounded-xl shadow-lg overflow-hidden min-h-[550px] relative"
-		(click)="$event.stopPropagation()">
-
-		<!-- Close button -->
-		<button (click)="showModal = false"
-			class="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors">
-			<svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-				xmlns="http://www.w3.org/2000/svg">
-				<path d="M18 6L6 18M6 6L18 18" stroke="#1e293b" stroke-width="2"
-					stroke-linecap="round" stroke-linejoin="round" />
-			</svg>
-		</button>
-
-		<!-- Left side - decorative panel (hidden on mobile) -->
-		<div
-			class="hidden lg:flex lg:w-1/2 bg-gray-900 items-center justify-center relative p-8">
-			<div class="absolute right-0 top-0 bottom-0 w-px bg-gray-700"></div>
-			<div class="text-white text-start">
-				<lib-logo [color]="'white'" />
-			</div>
-		</div>
-
-		<!-- Right side - form -->
-		<div
-			class="flex-1 flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12">
-			<div class="w-full max-w-md">
-				<div class="mb-10 text-center font-sans">
-					<h1 class="font-medium text-gray-900  md:text-2xl text-xl">
-						Access Your Account.
-					</h1>
-
-				</div>
-
-				<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-					<div class="space-y-5">
-						<lib-input
-							type="email"
-							placeholder="someone@example.com"
-							formControlName="email"
-							label="Username"
-							[error]="submitted && f['email'].errors ? (f['email'].errors['required'] ? 'Email is required' : 'Please enter a valid email') : ''">
-						</lib-input>
-
-						<lib-input
-							type="password"
-							label="Password"
-							placeholder="@P@ssword123"
-							formControlName="password"
-							[error]="submitted && f['password'].errors ? (f['password'].errors['required'] ? 'Password is required' : 'Password must be at least 6 characters') : ''">
-						</lib-input>
-					</div>
-
-					<div class="flex items-center justify-between text-sm">
-
-						<a href="#"
-							class=" ms-auto text-brand hover:text-brand-light font-medium my-2 text-sm tracking-tighter">
-							Forgot Username/ Forgot password?
-						</a>
-					</div>
-
-					<lib-button
-						variant="primary"
-						type="submit"
-						customClass="w-full text-center mt-8">
-						Sign In
-					</lib-button>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-}
+<!-- Login Modal -->
+<lib-login-modal [redirectUrl]="'http://localhost:4201/'"
+	(loginSuccess)="onLoginSuccess($event)"></lib-login-modal>

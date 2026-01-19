@@ -1,14 +1,4 @@
-export interface User {
-  name: string;
-  email: string;
-  role: string;
-}
-
-export const userData: any = {
-  name: 'John Doe',
-  email: 'example@example.com',
-  role: 'admin',
-};
+import { User } from '../../../shared-ui/src/lib/types';
 
 export interface CardData {
   title: string;

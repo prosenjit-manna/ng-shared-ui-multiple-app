@@ -11,3 +11,6 @@ export * from './lib/sidebar/sidebar';
 export * from './lib/footer/footer';
 export * from './lib/nav-link/nav-link';
 export * from './lib/alert-banner/alert-banner';
+export * from './lib/login-modal/login-modal';
+export * from './lib/services/login.service';
+export * from './lib/types';

@@ -1,2 +1,9 @@
-Profile
-<lib-button></lib-button>
+
+<div class="fixed top-0 left-0 right-0 z-50 ">
+	<lib-navbar [user]="currentUser()"
+		(openModal)="openModal()"></lib-navbar>
+</div>
+<div class=" h-screen"></div>
+<lib-footer></lib-footer>
+<lib-login-modal [redirectUrl]="'http://localhost:4201/'"
+	(loginSuccess)="onLoginSuccess($event)"></lib-login-modal>

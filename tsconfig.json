@@ -27,24 +27,5 @@
     "strictTemplates": true
   },
   "files": [],
-  "references": [
-    {
-      "path": "./projects/shared-ui/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/shared-ui/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/dashboard/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/dashboard/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/profile/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/profile/tsconfig.spec.json"
-    }
-  ]
+  "references": []
 }
