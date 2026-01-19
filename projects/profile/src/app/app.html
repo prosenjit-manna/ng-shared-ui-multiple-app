@@ -9,7 +9,7 @@
 
 		<!-- Hierarchical Grid Layout -->
 		<div
-			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 grid-rows-2 auto-rows-fr">
+			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
 
 			<div class="lg:row-span-1 h-full">
 				<app-card title="Payment Information" [showHeaderBorder]="true"
@@ -66,14 +66,11 @@
 					customClass="h-full">
 					<div class="h-full flex flex-col">
 						<ul class="list-disc list-inside space-y-2 text-gray-700">
-							<li class="text-sm">You are eligible to sign up for our no-fee automatic
-								withdrawal program to make your monthly mortgage payment. <a href="#"
-									class="text-blue-600 underline hover:text-blue-700">click
-									here</a>.</li>
-							<li class="text-sm">You asked for paperless communication and we
-								listened! You can now enroll to receive your statement via email. <a
-									href="#" class="text-blue-600 underline hover:text-blue-700">Click here
-									to enroll</a>.</li>
+							@for (message of importantMessages; track $index) {
+							<li class="text-sm">{{ message.text }} <a [href]="message.link"
+									class="text-blue-600 underline hover:text-blue-700">{{ message.linkText
+									}}</a>.</li>
+							}
 						</ul>
 
 					</div>
@@ -85,37 +82,41 @@
 				<app-card title="Account Details" [showHeaderBorder]="true"
 					customClass="h-full">
 					<div class="h-full flex flex-col">
+
+						<div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-8">
+							<p class="text-gray-700 text-xs">
+								{{accountDetails.payoffQuoteNote}}
+								<a [href]="accountDetails.payoffQuoteLink"
+									class="text-blue-600 underline hover:text-blue-700">click
+									here</a>.
+							</p>
+						</div>
+
 						<div class="space-y-4">
 							<div
 								class="flex justify-between items-center py-2 border-b border-gray-100">
 								<span class="text-gray-600 text-sm">Customer Name:</span>
-								<span class="text-gray-900 font-semibold text-sm">John Doe</span>
+								<span
+									class="text-gray-900 font-semibold text-sm">{{accountDetails.customerName}}</span>
 							</div>
 
 							<div
 								class="flex justify-between items-center py-2 border-b border-gray-100">
 								<span class="text-gray-600 text-sm">Property Address:</span>
-								<span class="text-gray-900 font-semibold text-sm">123 Main St, City, ST
-									12345</span>
+								<span
+									class="text-gray-900 font-semibold text-sm">{{accountDetails.propertyAddress}}</span>
 							</div>
 
 							<div
 								class="flex justify-between items-center py-2 border-b border-gray-100">
 								<span class="text-gray-600 text-sm">Principal Balance:</span>
-								<span class="text-gray-900 font-semibold text-sm">$***</span>
+								<span
+									class="text-gray-900 font-semibold text-sm">{{accountDetails.principalBalance}}</span>
 							</div>
 
-							<div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-4">
-								<p class="text-gray-700 text-xs">
-									*This amount is not a payoff quote. If you would like a payoff quote,
-									please
-									<a href="#" class="text-blue-600 underline hover:text-blue-700">click
-										here</a>.
-								</p>
-							</div>
 						</div>
 
-						<div class="flex justify-center mt-auto">
+						<div class="flex justify-center mt-10">
 							<lib-button
 								variant="outline"
 								size="md"
@@ -153,22 +154,16 @@
 											</tr>
 										</thead>
 										<tbody>
+											@for (letter of letters; track $index) {
 											<tr class="border-b border-gray-100 hover:bg-gray-50">
-												<td class="py-3 px-4 text-gray-600">MM/DD/YYYY</td>
+												<td class="py-3 px-4 text-gray-600">{{ letter.date }}</td>
 												<td class="py-3 px-4">
-													<a href="#"
-														class="text-blue-600 hover:text-blue-700 underline">Acknowledgement
-														Letter</a>
+													<a [href]="letter.link"
+														class="text-blue-600 hover:text-blue-700 underline">{{ letter.name
+														}}</a>
 												</td>
 											</tr>
-											<tr class="border-b border-gray-100 hover:bg-gray-50">
-												<td class="py-3 px-4 text-gray-600">MM/DD/YYYY</td>
-												<td class="py-3 px-4">
-													<a href="#"
-														class="text-blue-600 hover:text-blue-700 underline">Escrow
-														Analysis Statement</a>
-												</td>
-											</tr>
+											}
 										</tbody>
 									</table>
 								</div>
@@ -187,22 +182,16 @@
 											</tr>
 										</thead>
 										<tbody>
+											@for (doc of documents; track $index) {
 											<tr class="border-b border-gray-100 hover:bg-gray-50">
-												<td class="py-3 px-4 text-gray-600">01/15/2026</td>
+												<td class="py-3 px-4 text-gray-600">{{ doc.date }}</td>
 												<td class="py-3 px-4">
-													<a href="#"
-														class="text-blue-600 hover:text-blue-700 underline">2025 Tax
-														Statement</a>
+													<a [href]="doc.link"
+														class="text-blue-600 hover:text-blue-700 underline">{{ doc.name
+														}}</a>
 												</td>
 											</tr>
-											<tr class="border-b border-gray-100 hover:bg-gray-50">
-												<td class="py-3 px-4 text-gray-600">12/01/2025</td>
-												<td class="py-3 px-4">
-													<a href="#"
-														class="text-blue-600 hover:text-blue-700 underline">Annual
-														Statement</a>
-												</td>
-											</tr>
+											}
 										</tbody>
 									</table>
 								</div>

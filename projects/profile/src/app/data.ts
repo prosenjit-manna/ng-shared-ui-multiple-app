@@ -56,3 +56,50 @@ export const pieChartOptions = {
     },
   },
 };
+
+export const accountDetails = {
+  customerName: 'John Doe',
+  propertyAddress: '123 Main St, City, ST 12345',
+  principalBalance: '$***',
+  payoffQuoteNote: '*This amount is not a payoff quote. If you would like a payoff quote, please',
+  payoffQuoteLink: '#',
+};
+
+export const importantMessages = [
+  {
+    text: 'You are eligible to sign up for our no-fee automatic withdrawal program to make your monthly mortgage payment.',
+    link: '#',
+    linkText: 'click here',
+  },
+  {
+    text: 'You asked for paperless communication and we listened! You can now enroll to receive your statement via email.',
+    link: '#',
+    linkText: 'Click here to enroll',
+  },
+];
+
+export const letters = [
+  {
+    date: 'MM/DD/YYYY',
+    name: 'Acknowledgement Letter',
+    link: '#',
+  },
+  {
+    date: 'MM/DD/YYYY',
+    name: 'Escrow Analysis Statement',
+    link: '#',
+  },
+];
+
+export const documents = [
+  {
+    date: '01/15/2026',
+    name: '2025 Tax Statement',
+    link: '#',
+  },
+  {
+    date: '12/01/2025',
+    name: 'Annual Statement',
+    link: '#',
+  },
+];

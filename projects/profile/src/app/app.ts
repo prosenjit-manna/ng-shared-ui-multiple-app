@@ -9,7 +9,16 @@ import {
   AlertBanner,
   Button,
 } from '../../../shared-ui/src/public-api';
-import { userData, pieChartData, pieChartOptions, paymentInfo } from './data';
+import {
+  userData,
+  pieChartData,
+  pieChartOptions,
+  paymentInfo,
+  accountDetails,
+  importantMessages,
+  letters,
+  documents,
+} from './data';
 import { Card } from './card/card';
 import { ChartModule } from 'primeng/chart';
 import { TabsModule } from 'primeng/tabs';
@@ -26,6 +35,10 @@ export class App {
   pieData = pieChartData;
   pieOptions = pieChartOptions;
   payment = paymentInfo;
+  accountDetails = accountDetails;
+  importantMessages = importantMessages;
+  letters = letters;
+  documents = documents;
   tabs = [
     { value: '0', title: 'Letters', content: 'letters' },
     { value: '1', title: 'Documents', content: 'documents' },
